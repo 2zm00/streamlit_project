@@ -27,16 +27,22 @@ st.selectbox(
 menu() # Render the dynamic menu!
 
 
+tab1, tab2 = st.tabs(['테스트용 탭 1', '테스트 탭 2'])
 
-col1, col2 = st.columns([2,3])
 
-with col1:
-    st.title('My First App')
-with col2:
-    st.header("this is header")
+with tab2:
+	col1, col2 = st.columns([2,3])
+	with col1:
+		st.title('My First App')
+	with col2:
+		st.header("이건 헤더입니다.")
 
-col2.subheader('this is col2.subheader')
-col1.link_button("link test button", "https://leezmodev.vercel.app")
+	col2.subheader('이건 col2.subheader입니다.')
+	col1.link_button("테스트 링크 버튼", "https://leezmodev.vercel.app")
+	
+	if st.button("NASA"):
+		st.write_stream(stream_data)
+		st.image("nasa.jpg", caption="images from NASA")
 
 
 
@@ -66,9 +72,6 @@ def stream_data():
 
 
 
-if st.button("NASA"):
-    st.write_stream(stream_data)
-    st.image("nasa.jpg", caption="images from NASA")
 
 
 
@@ -104,4 +107,6 @@ def calculator():
 			except ZeroDivisionError:
 				st.write("0으로 나눌 수 없습니다. 다른 숫자를 넣어주세요")
 
-calculator()
+
+with tab1:
+	calculator()
