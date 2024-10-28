@@ -32,12 +32,11 @@ col1, col2 = st.columns([2,3])
 
 with col1:
     st.title('My First App')
-    
 with col2:
     st.header("this is header")
 
 col2.subheader('this is col2.subheader')
-col1.link_button("link button add to zmo site", "https://leezmodev.vercel.app")
+col1.link_button("link test button", "https://leezmodev.vercel.app")
 
 
 
@@ -70,3 +69,39 @@ def stream_data():
 if st.button("NASA"):
     st.write_stream(stream_data)
     st.image("nasa.jpg", caption="images from NASA")
+
+
+
+st.divider()
+
+
+
+
+def calculator():
+    
+	st.title("간단한 계산기 만들기")
+	num1 = st.number_input("숫자1", value=None, placeholder="계산을 원하시는 숫자 1을 입력해주세요")
+	num2 = st.number_input("숫자2", value=None, placeholder="계산을 원하시는 숫자 2을 입력해주세요")
+
+	st.divider()
+	st.write("아래 버튼을 눌러 결과를 확인해주세요")
+	col1, col2, col3, col4 = st.columns(4)
+
+
+	with col1:
+		if st.button("더하기(+)"):
+			st.write(num1+num2)
+	with col2:
+		if st.button("빼기(-)"):
+			st.write(num1-num2)
+	with col3:
+		if st.button("곱하기(*)"):
+			st.write(num1*num2)
+	with col4:
+		if st.button("나누기(/)"):
+			try:
+				st.write(round(num1/num2))
+			except ZeroDivisionError:
+				st.write("0으로 나눌 수 없습니다. 다른 숫자를 넣어주세요")
+
+calculator()
