@@ -27,6 +27,25 @@ st.selectbox(
 menu() # Render the dynamic menu!
 
 
+_Behemoth = """
+This computer-simulated image shows a supermassive black hole at the core of a galaxy. The black region in the center represents the black hole’s event horizon, where no light can escape the massive object’s gravitational grip. The black hole’s powerful gravity distorts space around it like a funhouse mirror. Light from background stars is stretched and smeared as the stars skim by the black hole.
+"""
+
+def stream_data():
+    for word in _Behemoth.split(" "):
+        yield word + " "
+        time.sleep(0.02)
+
+    yield pd.DataFrame(
+        np.random.randn(5, 10),
+        columns=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"],
+    )
+
+    for word in _Behemoth.split(" "):
+        yield word + " "
+        time.sleep(0.02)
+        
+
 tab1, tab2 = st.tabs(['테스트용 탭 1', '테스트 탭 2'])
 
 
@@ -49,25 +68,9 @@ with tab2:
 
 
 
-_Behemoth = """
-This computer-simulated image shows a supermassive black hole at the core of a galaxy. The black region in the center represents the black hole’s event horizon, where no light can escape the massive object’s gravitational grip. The black hole’s powerful gravity distorts space around it like a funhouse mirror. Light from background stars is stretched and smeared as the stars skim by the black hole.
-"""
 
 
-def stream_data():
-    for word in _Behemoth.split(" "):
-        yield word + " "
-        time.sleep(0.02)
 
-    yield pd.DataFrame(
-        np.random.randn(5, 10),
-        columns=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"],
-    )
-
-    for word in _Behemoth.split(" "):
-        yield word + " "
-        time.sleep(0.02)
-        
 
 
 
