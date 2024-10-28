@@ -28,19 +28,29 @@ menu() # Render the dynamic menu!
 
 
 
-st.title('My First App')
-st.write("1234")
+col1, col2 = st.columns([2,3])
+
+with col1:
+    st.title('My First App')
+    
+with col2:
+    st.header("this is header")
+
+col2.subheader('this is col2.subheader')
+col1.link_button("link button add to zmo site", "https://leezmodev.vercel.app")
 
 
-_LOREM_IPSUM = """
-Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+
+
+
+_Behemoth = """
+This computer-simulated image shows a supermassive black hole at the core of a galaxy. The black region in the center represents the black hole’s event horizon, where no light can escape the massive object’s gravitational grip. The black hole’s powerful gravity distorts space around it like a funhouse mirror. Light from background stars is stretched and smeared as the stars skim by the black hole.
 """
 
 
 def stream_data():
-    for word in _LOREM_IPSUM.split(" "):
+    for word in _Behemoth.split(" "):
         yield word + " "
         time.sleep(0.02)
 
@@ -49,7 +59,7 @@ def stream_data():
         columns=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"],
     )
 
-    for word in _LOREM_IPSUM.split(" "):
+    for word in _Behemoth.split(" "):
         yield word + " "
         time.sleep(0.02)
         
