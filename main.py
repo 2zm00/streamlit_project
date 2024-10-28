@@ -93,19 +93,50 @@ def calculator():
 
 	with col1:
 		if st.button("더하기(+)"):
-			st.write(num1+num2)
+			if num1 is None or num2 is None:
+				st.error("두 개의 숫자를 모두 입력해주세요")
+			else:
+				try:
+					result = num1 + num2
+					st.success(f"계산 결과: {result}")
+				except TypeError:
+					st.error("유효한 숫자를 입력해주세요")
 	with col2:
 		if st.button("빼기(-)"):
-			st.write(num1-num2)
+			if num1 is None or num2 is None:
+				st.error("두 개의 숫자를 모두 입력해주세요")
+			else:
+				try:
+					result = num1 - num2
+					st.success(f"계산 결과: {result}")
+				except TypeError:
+					st.error("유효한 숫자를 입력해주세요")
+        
 	with col3:
 		if st.button("곱하기(*)"):
-			st.write(num1*num2)
+			if num1 is None or num2 is None:
+				st.error("두 개의 숫자를 모두 입력해주세요")
+			else:
+				try:
+					result = num1 * num2
+					st.success(f"계산 결과: {result}")
+				except TypeError:
+					st.error("유효한 숫자를 입력해주세요")
 	with col4:
 		if st.button("나누기(/)"):
-			try:
-				st.write(round(num1/num2))
-			except ZeroDivisionError:
-				st.write("0으로 나눌 수 없습니다. 다른 숫자를 넣어주세요")
+			if num1 is None or num2 is None:
+				st.error("두 개의 숫자를 모두 입력해주세요")
+			else:
+				try:
+					if num2 == 0:
+						st.error("0으로 나눌 수 없습니다")
+					else:
+						result = round(num1 / num2, 2)
+						st.success(f"계산 결과: {result}")
+				except TypeError:
+					st.error("유효한 숫자를 입력해주세요")
+				except ZeroDivisionError:
+					st.error("0으로 나눌 수 없습니다")
 
 
 with tab1:
